@@ -1,0 +1,174 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2867
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 <!DOCTYPE html>\
+<html lang="en">\
+<head>\
+<meta charset="UTF-8">\
+<meta name="viewport" content="width=device-width, initial-scale=1.0">\
+<title>Hello Love \uc0\u10084 \u65039 </title>\
+\
+<!-- Fonts -->\
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">\
+\
+<style>\
+/* -------- Body & Theme -------- */\
+body \{\
+  margin: 0;\
+  font-family: 'Poppins', sans-serif;\
+  background: linear-gradient(135deg, #ffdde1, #ee9ca7);\
+  overflow: hidden;\
+  text-align: center;\
+  color: #fff;\
+\}\
+\
+/* -------- Container -------- */\
+.container \{\
+  margin-top: 10vh;\
+  position: relative;\
+  z-index: 2;\
+\}\
+\
+/* -------- Header -------- */\
+h1 \{\
+  font-size: 2.5rem;\
+  margin-bottom: 30px;\
+  text-shadow: 0 0 20px #ff9de2;\
+\}\
+\
+/* -------- Buttons -------- */\
+button \{\
+  padding: 14px 30px;\
+  font-size: 18px;\
+  border: none;\
+  border-radius: 30px;\
+  cursor: pointer;\
+  margin: 15px;\
+  transition: 0.3s;\
+\}\
+\
+#yesBtn \{\
+  background: linear-gradient(45deg, #ff9de2, #c77dff);\
+  color: white;\
+  box-shadow: 0 0 15px rgba(199,125,255,0.8);\
+\}\
+\
+#yesBtn:hover \{\
+  transform: scale(1.1);\
+\}\
+\
+#noBtn \{\
+  background: white;\
+  color: #ff4b5c;\
+  position: absolute;\
+\}\
+\
+/* -------- Celebration & Flower -------- */\
+#celebration, #flowerMsg \{\
+  display: none;\
+  font-size: 1.8rem;\
+  margin-top: 20px;\
+  color: #fff;\
+  text-shadow: 0 0 15px #ff9de2;\
+\}\
+\
+/* -------- Floating Hearts, Teddies, Lilies -------- */\
+.floating \{\
+  position: absolute;\
+  pointer-events: none;\
+  animation: float 8s linear infinite;\
+\}\
+\
+@keyframes float \{\
+  0% \{ transform: translateY(0) scale(1); opacity: 0.7; \}\
+  100% \{ transform: translateY(-110vh) scale(1.2); opacity: 0; \}\
+\}\
+</style>\
+</head>\
+\
+<body>\
+\
+<div class="container">\
+  <h1>Hello Love \uc0\u55357 \u56469 <br>(Krishala)<br>Will you be my Valentine?</h1>\
+\
+  <div class="buttons">\
+    <button id="yesBtn">Kabul Hai \uc0\u55357 \u56470 </button>\
+    <button id="noBtn">No \uc0\u55357 \u56866 </button>\
+  </div>\
+\
+  <div id="celebration">\
+    Yaaay!!! \uc0\u55357 \u56469  You made me the happiest person alive! \u55356 \u57225 \
+  </div>\
+\
+  <div id="flowerMsg">\
+    \uc0\u55356 \u57144  As I said earlier, I intend to be your last. \u55356 \u57144 \
+  </div>\
+</div>\
+\
+<!-- Music -->\
+<audio id="bgMusic" controls loop>\
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">\
+</audio>\
+\
+<script>\
+// -------- Floating Elements: Hearts, Teddies, Lilies --------\
+function createFloating(type, count) \{\
+  for(let i=0;i<count;i++)\{\
+    let elem = document.createElement("div");\
+    elem.classList.add("floating");\
+    elem.style.left = Math.random() * 100 + "vw";\
+    elem.style.fontSize = (Math.random()*30 + 20) + "px";\
+    if(type === "heart") elem.innerHTML = "\uc0\u10084 \u65039 ";\
+    if(type === "teddy") elem.innerHTML = "\uc0\u55358 \u56824 ";\
+    if(type === "lily") elem.innerHTML = "\uc0\u55356 \u57144 ";\
+    document.body.appendChild(elem);\
+    setTimeout(()=> elem.remove(), 8000);\
+  \}\
+\}\
+\
+// Start floating hearts & teddies continuously\
+setInterval(()=>\{ createFloating("heart", 2); createFloating("teddy",1); \}, 800);\
+\
+// -------- No Button Playful Behavior --------\
+const noBtn = document.getElementById("noBtn");\
+noBtn.addEventListener("mouseover", () => \{\
+  const x = Math.random() * (window.innerWidth - 100);\
+  const y = Math.random() * (window.innerHeight - 50);\
+  noBtn.style.left = x + "px";\
+  noBtn.style.top = y + "px";\
+\
+  // Show funny popup GIF\
+  alert("\uc0\u55357 \u56838  Haha! I knew you can't say no! \u55357 \u56368 ");\
+\});\
+\
+// -------- Yes Button --------\
+const yesBtn = document.getElementById("yesBtn");\
+const celebration = document.getElementById("celebration");\
+const flowerMsg = document.getElementById("flowerMsg");\
+const bgMusic = document.getElementById("bgMusic");\
+\
+yesBtn.addEventListener("click", () => \{\
+  celebration.style.display = "block";\
+  yesBtn.style.display = "none";\
+  noBtn.style.display = "none";\
+\
+  // Start floating lilies as magical animation\
+  let lilyInterval = setInterval(()=>\{ createFloating("lily",3); \},500);\
+\
+  setTimeout(()=>\{\
+    clearInterval(lilyInterval);\
+    flowerMsg.style.display = "block";\
+  \}, 5000);\
+\
+  // Play music\
+  bgMusic.play();\
+\});\
+</script>\
+\
+</body>\
+</html>\
+}
